@@ -50,6 +50,10 @@ const Navbar = () => {
                 Contact
                 <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#031b4e] transition-all duration-300 group-hover:w-full"></span>
               </Link>
+                <Link href="/Dashboard" className="text-black hover:text-[#031b4e] transition-colors duration-200 relative group">
+                Dashboard
+                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#031b4e] transition-all duration-300 group-hover:w-full"></span>
+              </Link>
             </div>
 
             <motion.div
@@ -114,6 +118,13 @@ const Navbar = () => {
                 className="block px-3 py-2 rounded-md text-white hover:bg-cyan-700 transition-colors duration-200"
               >
                 Contact
+              </Link>
+                 <Link 
+                href="/Dashboard" 
+                onClick={toggleMenu}
+                className="block px-3 py-2 rounded-md text-white hover:bg-cyan-700 transition-colors duration-200"
+              >
+                Dashboard
               </Link>
               <Link 
                 href="/Doctors" 
