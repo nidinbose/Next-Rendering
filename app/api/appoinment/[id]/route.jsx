@@ -3,7 +3,7 @@ import clientPromise from '../../../../lib/dbconnect';
 
 export async function GET(request, { params }) {
   try {
-    const [id] = params; // Correct way to access params in App Router
+    const {id} = params; 
     
     if (!id) {
       return NextResponse.json(
