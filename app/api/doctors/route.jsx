@@ -9,6 +9,7 @@ export async function POST(req) {
     if (!name || !email || !contact || !location || !stream || !image) {
       return new Response(JSON.stringify({ error: 'Missing required fields' }), {
         status: 400,
+        headers: { 'Content-Type': 'application/json' },
       });
     }
 
@@ -27,13 +28,20 @@ export async function POST(req) {
 
     return new Response(
       JSON.stringify({ message: 'Doctor added', doctorId: result.insertedId }),
-      { status: 201 }
+      {
+        status: 201,
+        headers: { 'Content-Type': 'application/json' },
+      }
     );
   } catch (error) {
-    console.error('POST Error:', error);
-    return new Response(JSON.stringify({ error: 'Internal Server Error' }), {
-      status: 500,
-    });
+    console.error('❌ POST /api/doctors error:', error);
+    return new Response(
+      JSON.stringify({ error: 'Internal Server Error', details: error.message }),
+      {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
   }
 }
 
@@ -50,9 +58,10 @@ export async function GET() {
       },
     });
   } catch (error) {
-    console.error('GET Error:', error);
+    console.error('❌ GET /api/doctors error:', error);
     return new Response(JSON.stringify({ error: 'Failed to fetch doctors' }), {
       status: 500,
+      headers: { 'Content-Type': 'application/json' },
     });
   }
 }
