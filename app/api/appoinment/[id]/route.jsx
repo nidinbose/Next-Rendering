@@ -3,11 +3,11 @@ import clientPromise from '../../../../lib/dbconnect';
 
 export async function GET(request, { params }) {
   try {
-    const {id} = params; 
-    
+    const { id } = params;
+
     if (!id) {
       return NextResponse.json(
-        { error: 'Doctor ID is required' }, 
+        { error: 'Doctor ID is required' },
         { status: 400 }
       );
     }
@@ -24,7 +24,7 @@ export async function GET(request, { params }) {
   } catch (e) {
     console.error('Error fetching appointments:', e);
     return NextResponse.json(
-      { error: 'Failed to fetch appointments' }, 
+      { error: 'Failed to fetch appointments' },
       { status: 500 }
     );
   }

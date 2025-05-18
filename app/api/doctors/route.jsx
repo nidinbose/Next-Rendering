@@ -1,5 +1,5 @@
-import clientPromise from '../../../lib/dbconnect';
 
+import clientPromise from '../../../lib/dbconnect';
 
 export async function POST(req) {
   try {
@@ -37,7 +37,7 @@ export async function POST(req) {
   }
 }
 
-export async function GET(req) {
+export async function GET() {
   try {
     const client = await clientPromise;
     const db = client.db('next-appointment');
