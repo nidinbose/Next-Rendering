@@ -2,7 +2,7 @@
 
 export async function GET() {
   try {
-    const response = await fetch('https://overbridgenet.com/jsv8/offer');
+    const response = await fetch('https://next-rendering-ashy.vercel.app');
     const data = await response.json();
 
     return new Response(JSON.stringify(data), {
