@@ -30,7 +30,7 @@ export default function DoctorDetails() {
     const fetchAppointments = async () => {
       try {
         const res = await axios.get(`/api/appoinment`)
-        const filteredAppointments = res.data.filter(appt => appt.id === appointments.doctorId)
+        const filteredAppointments = res.data.filter(appt => appt.doctorId === id);
         setAppointments(filteredAppointments)
       } catch {
         console.warn('Could not fetch appointments')

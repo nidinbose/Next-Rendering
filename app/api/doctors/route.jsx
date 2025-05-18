@@ -34,14 +34,11 @@ export async function POST(req) {
       }
     );
   } catch (error) {
-    console.error('❌ POST /api/doctors error:', error);
-    return new Response(
-      JSON.stringify({ error: 'Internal Server Error', details: error.message }),
-      {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' },
-      }
-    );
+    console.error('POST Error:', error);
+    return new Response(JSON.stringify({ error: 'Internal Server Error' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 }
 
@@ -49,16 +46,15 @@ export async function GET() {
   try {
     const client = await clientPromise;
     const db = client.db('next-appointment');
+
     const doctors = await db.collection('doctors').find({}).toArray();
 
     return new Response(JSON.stringify(doctors), {
       status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
     });
   } catch (error) {
-    console.error('❌ GET /api/doctors error:', error);
+    console.error('GET Error:', error);
     return new Response(JSON.stringify({ error: 'Failed to fetch doctors' }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
