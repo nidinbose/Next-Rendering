@@ -5,7 +5,7 @@ import AboutSection from "../HomeComponents/about"
 
 export default function Abouts(){
     return(
-        <div>
+        <div className="">
             <AboutSection/>
         </div>
     )
