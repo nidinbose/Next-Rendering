@@ -19,7 +19,7 @@ const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 px-4 sm:px-5 xl:px-0 w-full z-50 transition-all duration-300 ${scrolled ? 'backdrop-blur-sm bg-white/80 shadow-sm' : 'bg-transparent'}`}>
+    <nav className={` top-0 left-0 right-0 px-4 sm:px-5 xl:px-0 w-full z-50 transition-all duration-300 ${scrolled ? 'backdrop-blur-sm bg-white/80 shadow-sm' : 'bg-transparent'}`}>
       <div className="container mx-auto">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="flex-shrink-0 flex items-center">
@@ -31,7 +31,6 @@ const Navbar = () => {
             </motion.div>
           </Link>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
             <div className="flex space-x-4 lg:space-x-8 text-xs sm:text-sm uppercase font-medium tracking-wide">
               <Link href="/" className="text-black hover:text-[#031b4e] transition-colors duration-200 relative group">
@@ -71,7 +70,7 @@ const Navbar = () => {
             </motion.div>
           </div>
 
-          {/* Mobile Menu Button */}
+       
           <div className="md:hidden flex items-center">
             <motion.button
               whileTap={{ scale: 0.9 }}
@@ -85,7 +84,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Navigation */}
+  
       <AnimatePresence>
         {isOpen && (
           <motion.div 

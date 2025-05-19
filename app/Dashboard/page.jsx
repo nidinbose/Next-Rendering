@@ -59,7 +59,7 @@ export default function AdminPanel() {
               {data.map((doctor, index) => (
                 <Link key={index} href={`/Dashboard/${doctor._id}`} className="block group">
                   <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden">
-                    <img src={doctor.image} alt={doctor.name} className="w-full h-69 bg-cover" />
+                    <img src={doctor.image} alt={doctor.name} className="w-full h-90 md:h-75 lg:h-80 xl:h-90 w-full bg-cover" />
                     <div className="p-4 text-center">
                       <h3 className="text-lg font-semibold text-gray-800 group-hover:text-teal-600 transition">
                         Dr. {doctor.name}

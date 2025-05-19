@@ -124,7 +124,7 @@ const handleSubmit = async (e) => {
             className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12"
           >
             <div className="bg-white rounded-xl shadow-lg overflow-hidden lg:col-span-1 flex flex-col h-full">
-              <div className="relative pt-[75%]  overflow-hidden p-2">
+              <div className="relative pt-[75%]  overflow-hidden p-7">
                 <img
                   src={doctor.image}
                   alt={`Dr. ${doctor.name}`}

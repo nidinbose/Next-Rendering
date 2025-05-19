@@ -45,7 +45,7 @@ export default function DoctorsList() {
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="h-80 w-full object-cover"
+                    className="h-90 w-full bg-cover"
                   />
                   <div className="absolute top-4 right-4 bg-white rounded-full px-4 py-1 text-sm font-semibold flex items-center gap-1 shadow">
                     Available <span className="text-lime-400 font-extrabold">.</span>
