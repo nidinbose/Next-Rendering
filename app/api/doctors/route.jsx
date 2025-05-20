@@ -1,8 +1,11 @@
 
-import clientPromise from '../../../lib/dbconnect';
+import dbConnect from '../../../lib/dbconnect';
+import Doctor from '../../../modeles/Doctor.model';
 
 export async function POST(req) {
   try {
+    await dbConnect();
+
     const body = await req.json();
     const { name, email, contact, location, stream, image } = body;
 
@@ -13,21 +16,17 @@ export async function POST(req) {
       });
     }
 
-    const client = await clientPromise;
-    const db = client.db('next-appointment');
-
-    const result = await db.collection('doctors').insertOne({
+    const newDoctor = await Doctor.create({
       name,
       email,
       contact,
       location,
       stream,
       image,
-      createdAt: new Date(),
     });
 
     return new Response(
-      JSON.stringify({ message: 'Doctor added', doctorId: result.insertedId }),
+      JSON.stringify({ message: 'Doctor added', doctorId: newDoctor._id }),
       {
         status: 201,
         headers: { 'Content-Type': 'application/json' },
@@ -44,10 +43,9 @@ export async function POST(req) {
 
 export async function GET() {
   try {
-    const client = await clientPromise;
-    const db = client.db('next-appointment');
+    await dbConnect();
 
-    const doctors = await db.collection('doctors').find({}).toArray();
+    const doctors = await Doctor.find();
 
     return new Response(JSON.stringify(doctors), {
       status: 200,
