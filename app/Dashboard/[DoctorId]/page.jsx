@@ -50,7 +50,7 @@ export default function DoctorDetails() {
     }
   }
 
-  if (loading) return <p className="text-center mt-10">Loading...</p>
+  if (loading) return <p className="text-center mt-10 h-screen ">Loading... </p>
   if (error) return <p className="text-center text-red-500">{error}</p>
   if (!doctor) return <p className="text-center">Doctor not found.</p>
 

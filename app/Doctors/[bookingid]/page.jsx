@@ -1,5 +1,5 @@
 'use client';
-
+import { useRouter } from 'next/navigation';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -10,8 +10,15 @@ import { motion } from 'framer-motion';
 const timeSlots = ['9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM'];
 
 export default function Bookings() {
+  const router=useRouter()
   const params = useParams();
+  
   const id = params.bookingid;
+    const token=localStorage.getItem('token')
+
+  if(!token){
+    router.push(`/Login`)
+  }
 
   const [doctor, setDoctor] = useState(null);
   const [appointments, setAppointments] = useState([]);

@@ -1,10 +1,12 @@
 'use client';
+
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Menu, X, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
+
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -23,12 +25,7 @@ const Navbar = () => {
       <div className="container mx-auto">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="flex-shrink-0 flex items-center">
-            <motion.div 
-              whileHover={{ scale: 1.05 }}
-              className="text-xl sm:text-2xl font-bold tracking-wide text-[#031b4e]"
-            >
-              My<span className="">Doctor</span>
-            </motion.div>
+      
           </Link>
 
           <div className="hidden md:flex items-center space-x-6 lg:space-x-8">

@@ -1,22 +1,27 @@
 'use client'
 
-import axios from "axios"
-import { useEffect, useState } from "react"
-import Api from "../Api"
-import Link from "next/link"
-import { GoArrowUpRight } from "react-icons/go"
-import { FaUserMd } from "react-icons/fa"
+import { useRouter } from 'next/navigation'  
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { GoArrowUpRight } from 'react-icons/go'
+import { FaUserMd } from 'react-icons/fa'
 
 export default function DoctorsList() {
+  const router = useRouter()
   const [data, setData] = useState([])
+  const token=localStorage.getItem("token")
 
+  if(!token){
+    router.push(`/Login`)
+  }
   const getDoctors = async () => {
-    const domain = Api()
     try {
-      const res = await axios.get(`/api/doctors`)
-      setData(res.data)
+      const res = await axios.get('/api/doctors') 
+      setData(Array.isArray(res.data) ? res.data : [])
     } catch (error) {
-      console.error("Failed to fetch doctors:", error)
+      console.error('Failed to fetch doctors:', error)
+      setData([])
     }
   }
 
@@ -34,7 +39,9 @@ export default function DoctorsList() {
         <div className="flex flex-col items-center justify-center h-[50vh] text-center text-gray-500">
           <FaUserMd className="text-6xl mb-4 text-blue-400" />
           <h3 className="text-2xl font-semibold mb-2">No Doctors Available</h3>
-          <p className="text-gray-600">Please check back later or contact support for more information.</p>
+          <p className="text-gray-600">
+            Please check back later or contact support for more information.
+          </p>
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
@@ -43,8 +50,8 @@ export default function DoctorsList() {
               <div className="rounded-3xl bg-white shadow-md overflow-hidden max-w-md mx-auto hover:border hover:border-teal-400 transition">
                 <div className="relative">
                   <img
-                    src={item.image}
-                    alt={item.title}
+                    src={item.image || '/placeholder.jpg'}
+                    alt={item.title || item.name}
                     className="h-90 w-full bg-cover"
                   />
                   <div className="absolute top-4 right-4 bg-white rounded-full px-4 py-1 text-sm font-semibold flex items-center gap-1 shadow">
